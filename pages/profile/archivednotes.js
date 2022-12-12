@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 export default function Archivednotes() {
 
     const [archiveArr, setArchiveArr] = useState([]);
+    const [notes, setNotes] = useState([]);
 
 
     const route = useRouter();
@@ -13,6 +14,7 @@ export default function Archivednotes() {
     useEffect(() => {
         loginCheck();
         getArchives();
+        getLocalNotes();
     }, []);
 
     function loginCheck() {
@@ -27,13 +29,32 @@ export default function Archivednotes() {
         setArchiveArr(localArchiveArr);
     }
 
+    function getLocalNotes() {
+        const localNotesArr = JSON.parse(localStorage.getItem('localNotes'));
+        if (localNotesArr !== '' || localNotesArr !== null) {
+            setNotes(localNotesArr);
+        }
+    }
+
     function handleLogout() {
         sessionStorage.removeItem('user');
         route.push('/');
     }
 
     function handleUnarchive(noteId) {
-        console.log(noteId);
+        let unarchiveNote;
+        for (let i = 0; i < archiveArr.length; i++) {
+            if (archiveArr[i].id === noteId) {
+                unarchiveNote = archiveArr.splice(i, 1);
+                break;
+            }
+        }
+        notes.push(unarchiveNote[0]);
+        setNotes(notes);
+        localStorage.setItem('localNotes', JSON.stringify(notes));
+        setArchiveArr(archiveArr);
+        localStorage.setItem('archiveNotes', JSON.stringify(archiveArr));
+        route.replace('/profile/archivednotes');
     }
 
     return (
@@ -48,7 +69,7 @@ export default function Archivednotes() {
                 <div>
                     <nav className="navbar sticky-top bg-light" style={{ height: 70 }}>
                         <div className="container-fluid">
-                            <Link className="navbar-brand" href="/profile">Simple Note</Link>
+                            <h1 className="navbar-brand">Simple Note</h1>
                             <button type="button" class="btn btn-outline-dark" style={{ width: 90, marginRight: 20 }} onClick={handleLogout}>Log Out</button>
                         </div>
                     </nav>
