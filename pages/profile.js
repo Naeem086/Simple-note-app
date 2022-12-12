@@ -19,16 +19,19 @@ export default function Profile() {
     const route = useRouter();
 
     useEffect(() => {
+        loginCheck();
+        getLocalNotes();
+        getArchiveArr();
+    }, []);
+
+    function loginCheck() {
         const userName = sessionStorage.getItem('user');
         if (userName === '' || userName === null) {
             route.push('/');
         } else {
             setUsername(userName);
         }
-        getLocalNotes();
-        getArchiveArr();
-
-    }, []);
+    }
 
     function getArchiveArr() {
         const localArchiveArr = JSON.parse(localStorage.getItem('archiveNotes'));
