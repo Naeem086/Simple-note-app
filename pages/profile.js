@@ -175,7 +175,7 @@ export default function Profile() {
                 <div>
                     <nav className="navbar sticky-top bg-light" style={{ height: 70 }}>
                         <div className="container-fluid">
-                            <Link className="navbar-brand" href="/profile">Sample Note</Link>
+                            <Link className="navbar-brand" href="/profile">Simple Note</Link>
                             <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo" onClick={handleAddNote}>Add Note</button>
                             <button type="button" class="btn btn-outline-dark" style={{ width: 90, marginRight: 20 }} onClick={handleLogout}>Log Out</button>
                         </div>

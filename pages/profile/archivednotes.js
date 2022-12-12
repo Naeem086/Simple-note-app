@@ -44,7 +44,7 @@ export default function Archivednotes() {
                 <div>
                     <nav className="navbar sticky-top bg-light" style={{ height: 70 }}>
                         <div className="container-fluid">
-                            <Link className="navbar-brand" href="/profile">Sample Note</Link>
+                            <Link className="navbar-brand" href="/profile">Simple Note</Link>
                             <button type="button" class="btn btn-outline-dark" style={{ width: 90, marginRight: 20 }} onClick={handleLogout}>Log Out</button>
                         </div>
                     </nav>
@@ -61,11 +61,11 @@ export default function Archivednotes() {
                             return (
                                 <>
                                     <div className="col-sm-4" style={{ marginTop: 15 }}>
-                                        <div className="card" style={{ backgroundColor: "lightgoldenrodyellow" }}>
+                                        <div className="card" style={{ backgroundColor: "darkgreen" }}>
                                             <div className="card-body">
                                                 <p className="card-text" style={{ color: "lightsalmon", fontSize: 15 }}>Created - {list.creationDate}</p>
-                                                <h5 className="card-title">{list.title}</h5>
-                                                <p className="card-text">{list.content}</p>
+                                                <h5 className="card-title" style={{ color: 'white' }}>{list.title}</h5>
+                                                <p className="card-text" style={{ color: 'white' }}>{list.content}</p>
                                                 <p className="card-text" style={{ color: "lightgrey", fontSize: 15 }}>Last updated on {list.updationDate}</p>
                                             </div>
                                         </div>
