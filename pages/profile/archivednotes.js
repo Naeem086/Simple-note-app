@@ -32,6 +32,10 @@ export default function Archivednotes() {
         route.push('/');
     }
 
+    function handleUnarchive(noteId) {
+        console.log(noteId);
+    }
+
     return (
         <div>
             <Head>
@@ -67,6 +71,7 @@ export default function Archivednotes() {
                                                 <h5 className="card-title" style={{ color: 'white' }}>{list.title}</h5>
                                                 <p className="card-text" style={{ color: 'white' }}>{list.content}</p>
                                                 <p className="card-text" style={{ color: "lightgrey", fontSize: 15 }}>Last updated on {list.updationDate}</p>
+                                                <button type="button" class="btn btn-outline-warning" onClick={() => handleUnarchive(list.id)}>Unarchived</button>
                                             </div>
                                         </div>
                                     </div>
